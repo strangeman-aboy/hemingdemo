@@ -7,7 +7,12 @@
 - GitHub 仓库：[strangeman-aboy/hemingdemo](https://github.com/strangeman-aboy/hemingdemo)
 - GitHub Pages 预期地址：[https://strangeman-aboy.github.io/hemingdemo/](https://strangeman-aboy.github.io/hemingdemo/)
 
-如果 GitHub Pages 地址暂时显示 404，请在仓库的 `Settings > Pages` 中把发布来源设置为 `GitHub Actions`，然后等待部署完成。
+如果 GitHub Pages 地址暂时显示 404，或 Actions 报 `Get Pages site failed`，需要先在仓库里启用 Pages：
+
+1. 打开仓库 `Settings`
+2. 进入左侧 `Pages`
+3. 在 `Build and deployment` 里把 `Source` 设置为 `GitHub Actions`
+4. 回到 `Actions` 页面，重新运行 `Deploy static site to GitHub Pages`
 
 ## 页面内容
 
@@ -58,3 +63,9 @@ http://127.0.0.1:5173/index.html
 - 每次推送到 `main` 分支会触发 `.github/workflows/deploy-pages.yml`
 - 部署产物为仓库根目录下的静态文件
 - 首次使用时，需要仓库开启 GitHub Pages，并选择 `GitHub Actions` 作为发布来源
+
+常见失败原因：
+
+- `Get Pages site failed: Not Found`：仓库还没有启用 GitHub Pages。
+- `Resource not accessible by integration`：Actions 没有权限自动创建 Pages 站点，需要在 `Settings > Pages` 手动开启。
+- Pages 地址 404：部署还没完成，或访问地址应使用当前仓库名 `/hemingdemo/`。
